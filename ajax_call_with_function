@@ -1,0 +1,30 @@
+jQuery('body').on('click', '#change_password', function() {
+
+        var current_password = jQuery('#current_password').val();
+        var password = jQuery('#password').val();
+        if (password != '') {
+
+            jQuery.ajax({
+                type: "POST",
+                dataType: "json",
+                url: ajaxurl,
+                data: {
+                    action: "function_name",
+                   
+                },
+                success: function(data) {
+                    checkResponse = data;
+                    console.log(data);
+                    if (data.status == "success") {
+                       console.log(data.message);
+                    } else {
+                        console.log(data.error);
+                    }
+                }
+
+            });
+        }
+        event.preventDefault();
+    });
+
+})
